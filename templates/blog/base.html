@@ -24,11 +24,13 @@
     <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'blog/js/pace.min.js' %}"></script>
     <script src="{% static 'blog/js/modernizr.custom.js' %}"></script>
+    <script src="{% static 'blog/js/ehco.js' %}"></script>
 
 </head>
 
 <body>
     <div class="container">
+        <audio id="music2" src="{% static 'blog/media/bgm.mp3' %}" autoplay="autoplay" loop="loop">你的浏览器不支持audio标签.</audio>
         <header id="site-header">
             <div class="row">
                 <div class="col-md-4 col-sm-5 col-xs-8">
@@ -47,6 +49,12 @@
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
+                                <li class="cl-effect-8">
+                                    <a href="/" date-hover="Home">Home</a>
+                                </li>
+                                <li class="cl-effect-8">
+                                    <a type="button" href="javascript:playPause();">BGM开/关</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- /.navbar-collapse -->
@@ -77,6 +85,7 @@
                 <aside class="col-md-4">
                     <div class="widget widget-recent-posts">
                         <h3 class="widget-title">最近文章</h3>
+                        {% get_recent_posts as recent_post_list %}
                         <ul>
                             {% for post in recent_post_list %}
                                 <li>
@@ -116,7 +125,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p>footer 待编辑</p>
+                    <p class="copyright">&copy; 2018·<a>个人微信: kingdom_bai </a>·<a href="https://github.com/LittleBai0606">Github</a>·
+                        <a href="https://www.zhihu.com/people/leilei-li-79/activities">知乎</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -136,7 +147,7 @@
     </div>
 
 
-
+<script src="{% static 'blog/js/script.js' %}"></script>
 </body>
 
 </html>
