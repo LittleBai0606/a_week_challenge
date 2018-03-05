@@ -21,5 +21,5 @@ def deploy():
         ../env/bin/python3 manage.py makemigrations &&
         ../env/bin/python3 manage.py migrate
         """.format(source_folder))
-    sudo('restart gunicorn-baicaicoder.online')
+    sudo('start gunicorn-baicaicoder.online')
     sudo('service nginx reload')
