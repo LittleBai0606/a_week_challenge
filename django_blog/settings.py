@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '120.78.167.243', '.baicaicoder.onlin
 # Application definition
 
 INSTALLED_APPS = [
+    'suit.apps.DjangoSuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
