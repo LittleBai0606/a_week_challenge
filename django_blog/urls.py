@@ -17,8 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^static/(?P<path>.*)$', 'django.contrib.staticfiles.views.serve'),
+    url(r'^static/(?P<path>.*)$', include('django.contrib.staticfiles.views.serve')),
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls', namespace='blog')),
-    url(r'', include('comments.urls', namespace='comments'))
+    url(r'', include('comments.urls', namespace='comments')),
 ]
