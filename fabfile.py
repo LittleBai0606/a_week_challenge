@@ -1,15 +1,3 @@
-#!/usr/bin/env python
-# encoding: utf-8
-
-"""
-@author: littlewhite
-@license: MIT Licence
-@contact: littlewhite0606@qq.com
-@site: https://littlebai0606.github.io/
-@software: PyCharm
-@file: fabfile.py
-@time: 2018/3/3 下午3:08
-"""
 from fabric.api import env, run
 from fabric.operations import sudo
 
@@ -28,9 +16,10 @@ def deploy():
     run('cd %s && git pull' % source_folder)
     run("""
         cd {} &&
+        ../env/bin/pip install -r requirements.txt &&
         ../env/bin/python3 manage.py collectstatic --noinput &&
         ../env/bin/python3 manage.py makemigrations &&
         ../env/bin/python3 manage.py migrate
         """.format(source_folder))
-    sudo('start gunicorn-baicaicoder.online')
+    sudo('restart gunicorn-baicaicoder.online')
     sudo('service nginx reload')
